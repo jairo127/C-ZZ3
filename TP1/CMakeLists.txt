@@ -44,7 +44,7 @@ set ( ZZ3_HEADERS
 set ( ZZ3_SOURCES
       src/cartesien.cpp
       #src/nuage.cpp
-      #src/point.cpp
+      src/point.cpp
       src/polaire.cpp
       #src/vecteur.cpp
     )
