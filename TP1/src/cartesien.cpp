@@ -8,6 +8,11 @@ void Cartesien::afficher(std::ostream& stream) const {
     stream << "(x=" << _x << ";y=" << _y << ")";
 }
 
+void Cartesien::convertir(Polaire& p) const {
+    p.setAngle(sqrt(_x * _x + _y * _y));
+    p.setDistance(atan(_y / _x));  
+}
+
 void Cartesien::setX(const double x) {
     _x = x;
 }

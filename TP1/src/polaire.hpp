@@ -1,7 +1,9 @@
 #ifndef __ZZ3_CPP1_Polaire__
 #define __ZZ3_CPP1_Polaire__
 #include <iostream>
+#include <cmath>
 #include "point.hpp"
+#include "cartesien.hpp"
 
 class Polaire : public Point {
     private:
@@ -12,6 +14,7 @@ class Polaire : public Point {
         Polaire();
         Polaire(const double, const double);
         void afficher(std::ostream&) const;
+        void convertir(Cartesien&) const;
 
         void setAngle(const double);
         void setDistance(const double);

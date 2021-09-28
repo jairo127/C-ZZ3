@@ -8,6 +8,11 @@ void Polaire::afficher(std::ostream& stream) const {
     stream << "(a=" << _a << ";d=" << _d << ")";
 }
 
+void Polaire::convertir(Cartesien& c) const {
+    c.setX(_a * cos(_d));
+    c.setY(_a * sin(_d));
+}
+
 void Polaire::setAngle(const double a) {
     _a = a;
 }
