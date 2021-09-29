@@ -13,7 +13,7 @@ class Cartesien : public Point {
         Cartesien();
         Cartesien(const double, const double);
         void afficher(std::ostream&) const;
-        void convertir(class Polaire&) const override;
+        void convertir(Polaire&) const override;
         void convertir(Cartesien&) const override;
 
         void setX(const double);
