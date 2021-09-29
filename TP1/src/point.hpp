@@ -5,7 +5,8 @@
 class Point {
     public:
         virtual void afficher(std::ostream&) const = 0;
-        // virtual void convertir(Cartesien&) const;
+        virtual void convertir(class Cartesien&) const = 0;
+        virtual void convertir(class Polaire&) const = 0;
         friend std::ostream& operator<<(std::ostream&, const Point&);
 };
 
