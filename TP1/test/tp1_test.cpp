@@ -314,7 +314,7 @@ Cartesien p4(x[3],y[3]);
 Nuage n;
 
 //----------------------------------------------------------------------------------------------- 20
-/*TEST_CASE ( "TP1_Nuage::Barycentre" ) {
+TEST_CASE ( "TP1_Nuage::Barycentre" ) {
  n.ajouter(p1);
  n.ajouter(p2);
  n.ajouter(p3);
@@ -341,6 +341,6 @@ TEST_CASE ( "TP1_Nuage::BarycentrePolaire" ) {
 
  REQUIRE ( b.getAngle() == Approx(p.getAngle()) );
  REQUIRE ( b.getDistance() == Approx(p.getDistance()) );
-}*/
+}
 
 // Fin //-------------------------------------------------------------------------------------------

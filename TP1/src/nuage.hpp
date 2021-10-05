@@ -17,8 +17,18 @@ class Nuage {
         unsigned int size(void) const;
         std::vector<Point*>::const_iterator begin(void) const;
         std::vector<Point*>::const_iterator end(void) const;
+};
 
-        const Point* operator[](int) const;
+Cartesien barycentre(Nuage&);
+
+class BarycentreCartesien {
+    public:
+        Cartesien operator()(Nuage&);
+};
+
+class BarycentrePolaire {
+    public:
+        Polaire operator()(Nuage&);
 };
 
 #endif
