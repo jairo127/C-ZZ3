@@ -7,6 +7,7 @@
 #include <cartesien.hpp>
 #include <polaire.hpp>
 #include <nuage.hpp>
+#include <vecteur.hpp>
 
 // Tests //-----------------------------------------------------------------------------------------
 
@@ -343,4 +344,92 @@ TEST_CASE ( "TP1_Nuage::BarycentrePolaire" ) {
  REQUIRE ( b.getDistance() == Approx(p.getDistance()) );
 }
 
+//----------------------------------------------------------------------------------------------- 23
+TEST_CASE("Vecteur1")
+{
+    const Vecteur v;
+
+    REQUIRE(v.capacity() >= 10);
+    REQUIRE(v.size() == 0);
+}
+
+TEST_CASE("Vecteur2")
+{
+    Vecteur v(20);
+
+    REQUIRE(v.capacity() == 20);
+    REQUIRE(v.size() == 0);
+}
+
+TEST_CASE("Vecteur3")
+{
+    Vecteur v(5);
+
+    SECTION("ajout de quelques elements")
+    {
+        REQUIRE(v.capacity() == 5);
+
+        for (int i = 0; i < 4; ++i)
+            v.push_back(i);
+
+        REQUIRE(v.size() == 4);
+    }
+
+    SECTION("tableau un peu agrandi")
+    {
+        // on peut verifier que vecteur est bien un nouveau :-)
+        REQUIRE(v.capacity() == 5);
+        for (int i = 0; i < 6; ++i)
+            v.push_back(i);
+
+        REQUIRE(v.capacity() == 10);
+        REQUIRE(v.size() == 6);
+    }
+
+    SECTION("on verifie les valeurs dans le vecteur")
+    {
+        for (int i = 0; i < 25; ++i)
+            v.push_back(i);
+
+        REQUIRE(v.capacity() == 25);
+        REQUIRE(v.size() == 25);
+
+        for (int i = 0; i < 25; ++i)
+            CHECK(v[i] == i);
+    }
+
+    SECTION("on verifie l'addition")
+    {
+        Vecteur v2(5);
+        for (int i = 1; i <= 3; i++) {
+            v.push_back(i);
+            v2.push_back(i*2);
+        }
+
+        Vecteur v3 = v + v2;
+
+        REQUIRE(v3.capacity() == 10);
+        REQUIRE(v3.size() == 6);
+        REQUIRE(v3[0] == 1);
+        REQUIRE(v3[1] == 2);
+        REQUIRE(v3[2] == 3);
+        REQUIRE(v3[3] == 2);
+        REQUIRE(v3[4] == 4);
+        REQUIRE(v3[5] == 6);
+    }
+
+    SECTION("produit scalaire")
+    {
+        Vecteur v2(5);
+        for (int i = 1; i <= 3; i++) {
+            v.push_back(i);
+            v2.push_back(i);
+        }
+        
+        int scal = v * v2;
+        
+        REQUIRE(scal == 14);
+    }
+
+}
 // Fin //-------------------------------------------------------------------------------------------
