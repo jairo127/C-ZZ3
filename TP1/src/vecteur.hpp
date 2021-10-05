@@ -26,6 +26,20 @@ class Vecteur {
         int capacity() const;
         int size() const;
         void push_back(int const val);
+
+        class Iterateur {
+            private:
+                int * _valeur;
+            public:
+                Iterateur(int*);
+                Iterateur& operator++(void);
+                Iterateur operator++(int);
+                int operator*(void);
+                //bool operator==(const Iterateur&)
+        };
+
+        Iterateur begin(void);
+        Iterateur end(void);
 };
 
 #endif

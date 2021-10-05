@@ -6,6 +6,8 @@
 #include "polaire.hpp"
 
 class Nuage {
+    // using vector_pt = std::vector<Point*>;
+    // using const_iterator = std::vector<Point*>::const_iterator;
     private:
         std::vector<Point*> _pts;
 

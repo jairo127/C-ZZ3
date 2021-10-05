@@ -88,3 +88,25 @@ int Vecteur::operator*(const Vecteur& right) {
     }
     return sum;
 }
+
+Vecteur::Iterateur::Iterateur(int * valeur) : _valeur(valeur) {}
+
+Iterateur& Vecteur::Iterateur::operator++(void) {
+    _valeur++;
+    return &this;
+}
+
+Iterateur Vecteur::Iterateur::operator++(int i) {
+    _valeur += i;
+    return *this;
+}
+
+int Vecteur::Iterateur::operator*(void) {
+    return *_valeur;
+}
+
+Iterateur Vecteur::begin() {
+    return Iterateur(this->_tab);
+}
+
+// WIP ...
