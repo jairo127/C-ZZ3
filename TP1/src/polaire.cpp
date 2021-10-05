@@ -5,6 +5,10 @@ Polaire::Polaire() : _a(0), _d(0) {}
 
 Polaire::Polaire(const double a, const double d) : _a(a), _d(d) {}
 
+Polaire::Polaire(const Cartesien& c)
+    : _a(std::atan2(c.getY(),c.getX())*180/3.14159),
+      _d(std::sqrt((c.getX()*c.getX()) + (c.getY()*c.getY()))) {}
+
 void Polaire::afficher(std::ostream& stream) const {
     stream << "(a=" << _a << ";d=" << _d << ")";
 }

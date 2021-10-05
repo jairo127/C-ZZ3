@@ -5,6 +5,10 @@ Cartesien::Cartesien() : _x(0), _y(0) {}
 
 Cartesien::Cartesien(const double x, const double y) : _x(x), _y(y) {}
 
+Cartesien::Cartesien(const Polaire& p) 
+    : _x(p.getDistance() * cos(p.getAngle()*3.14159/180)),
+      _y(p.getDistance() * sin(p.getAngle()*3.14159/180)) {}
+
 void Cartesien::afficher(std::ostream& stream) const {
     stream << "(x=" << _x << ";y=" << _y << ")";
 }

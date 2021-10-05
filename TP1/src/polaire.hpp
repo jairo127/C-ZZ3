@@ -12,6 +12,7 @@ class Polaire : public Point {
     public:
         Polaire();
         Polaire(const double, const double);
+        Polaire(const Cartesien&);
         void afficher(std::ostream&) const;
         void convertir(Polaire&) const override;
         void convertir(Cartesien&) const override;
