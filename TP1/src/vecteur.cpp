@@ -91,22 +91,30 @@ int Vecteur::operator*(const Vecteur& right) {
 
 Vecteur::Iterateur::Iterateur(int * valeur) : _valeur(valeur) {}
 
-Iterateur& Vecteur::Iterateur::operator++(void) {
+Vecteur::Iterateur& Vecteur::Iterateur::operator++() {
     _valeur++;
-    return &this;
+    return *this;
 }
 
-Iterateur Vecteur::Iterateur::operator++(int i) {
+Vecteur::Iterateur Vecteur::Iterateur::operator++(int i) {
     _valeur += i;
     return *this;
 }
 
-int Vecteur::Iterateur::operator*(void) {
+int Vecteur::Iterateur::operator*() {
     return *_valeur;
 }
 
-Iterateur Vecteur::begin() {
+bool Vecteur::Iterateur::operator==(const Iterateur& right) {
+    if (this->_valeur == right._valeur)
+        return true;
+    return false;
+}
+
+Vecteur::Iterateur Vecteur::begin() {
     return Iterateur(this->_tab);
 }
 
-// WIP ...
+Vecteur::Iterateur Vecteur::end() {
+    return Iterateur(this->_tab+_size-1);
+}

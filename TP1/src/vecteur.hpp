@@ -32,14 +32,14 @@ class Vecteur {
                 int * _valeur;
             public:
                 Iterateur(int*);
-                Iterateur& operator++(void);
-                Iterateur operator++(int);
-                int operator*(void);
-                //bool operator==(const Iterateur&)
+                Vecteur::Iterateur& operator++();
+                Vecteur::Iterateur operator++(int);
+                int operator*();
+                bool operator==(const Iterateur&);
         };
 
-        Iterateur begin(void);
-        Iterateur end(void);
+        Vecteur::Iterateur begin(void);
+        Vecteur::Iterateur end(void);
 };
 
 #endif
