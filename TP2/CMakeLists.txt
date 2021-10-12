@@ -35,7 +35,7 @@ message ( STATUS "Compiler flags: ${CMAKE_CXX_FLAGS}" )
 # Sources #-----------------------------------------------------------------------------------------
 set ( ZZ3_HEADERS
       src/cartesien.hpp
-      src/nuage.hpp
+      src/nuage_v2.hpp
       src/point.hpp
       src/polaire.hpp
     )
