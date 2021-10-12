@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "cartesien.hpp"
+#include "polaire.hpp"
 
 template <typename T>
 class Nuage {
@@ -60,6 +61,11 @@ T barycentre_v1(Nuage<T> n) {
     if (n_size == 0) n_size = 1;
 
     return T(Cartesien(sum_x/n_size, sum_y/n_size));
+}
+
+template <>
+Polaire barycentre_v1<Polaire>(Nuage<Polaire> n) {
+    
 }
 
 #endif
