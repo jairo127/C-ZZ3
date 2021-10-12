@@ -63,9 +63,25 @@ T barycentre_v1(Nuage<T> n) {
     return T(Cartesien(sum_x/n_size, sum_y/n_size));
 }
 
+/* SPECIALIZATION OF BARYCENTER FOR POLAR COORDINATES
 template <>
 Polaire barycentre_v1<Polaire>(Nuage<Polaire> n) {
+    int n_size = n.size();
+    double sum_x = 0;
+    double sum_y = 0;
+    Cartesien c;
     
-}
+    typename Nuage<Polaire>::const_iterator it = n.begin();
+    while (it != n.end()) {
+        (*it).convertir(c);
+        sum_x += c.getX();
+        sum_y += c.getY();
+        it++;
+    }
+
+    if (n_size == 0) n_size = 1;
+
+    return Polaire(Cartesien(sum_x/n_size, sum_y/n_size));
+}*/
 
 #endif
