@@ -1,8 +1,8 @@
 #ifndef __ZZ3_CPP2_NUAGE__
 #define __ZZ3_CPP2_NUAGE__
 
-#include <iostream>
 #include <vector>
+#include "cartesien.hpp"
 
 template <typename T>
 class Nuage {
@@ -40,6 +40,26 @@ typename Nuage<T>::const_iterator Nuage<T>::begin() {
 template <typename T>
 typename Nuage<T>::const_iterator Nuage<T>::end() {
     return v.end();
+}
+
+template <typename T>
+T barycentre_v1(Nuage<T> n) {
+    int n_size = n.size();
+    double sum_x = 0;
+    double sum_y = 0;
+    Cartesien c;
+    
+    typename Nuage<T>::const_iterator it = n.begin();
+    while (it != n.end()) {
+        (*it).convertir(c);
+        sum_x += c.getX();
+        sum_y += c.getY();
+        it++;
+    }
+
+    if (n_size == 0) n_size = 1;
+
+    return T(Cartesien(sum_x/n_size, sum_y/n_size));
 }
 
 #endif
