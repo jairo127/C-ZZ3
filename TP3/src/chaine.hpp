@@ -7,9 +7,18 @@
 #include "exception.hpp"
 #include "demangle.hpp"
 
+template <typename T> constexpr bool is_tuple = false;
+template <typename... Args> constexpr bool is_tuple<std::tuple<Args...>> = true;
+
+template <typename T, size_t... Is>
+std::string chaine_t(const T & t, std::index_sequence<Is...>);
+
 template <typename T>
 std::string chaine(T obj) {
-    throw ExceptionChaine(obj);
+    if constexpr(is_tuple<T>)
+        return chaine_t(obj, std::make_index_sequence<std::tuple_size_v<T>>());
+    else
+        throw ExceptionChaine(obj);
 }
 
 template <typename T>
