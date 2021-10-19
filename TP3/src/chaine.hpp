@@ -28,4 +28,14 @@ std::string chaine(T obj, Types... args) {
     return chaine(obj) + " " + chaine(args...);
 }
 
+template <typename T, size_t... Is>
+std::string chaine_t(const T & t, std::index_sequence<Is...>) {
+    return chaine(std::get<Is>(t)...);
+}
+
+template <typename... Args>
+std::string chaine(const std::tuple<Args...> & t) {
+    return chaine_t(t, std::make_index_sequence<sizeof... (Args)>());
+}
+
 #endif

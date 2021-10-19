@@ -117,7 +117,7 @@ TEST_CASE ( "TP3_Chaine::ConversionVariadic" ) {
 }
 
 //------------------------------------------------------------------------------------------------ 4
-/*TEST_CASE ( "TP3_Chaine::ConversionTuple1" ) {
+TEST_CASE ( "TP3_Chaine::ConversionTuple1" ) {
  std::tuple<std::string,int,double>      t1{"Smith",10,13.27};
  std::tuple<std::string,int,double,long> t2{"Smith",10,13.27,100};
 
@@ -143,14 +143,14 @@ TEST_CASE ( "TP3_Chaine::ConversionVariadic" ) {
  }
 
  REQUIRE ( erreur == 2 );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 5
 using Identite = std::tuple<std::string,std::string>; // {nom,prenom}
 using Date = std::tuple<int,int,int>; // {jour,mois,annee}
 using Coordonnees = std::tuple<double,double>; // {x,y}
 
-/*TEST_CASE ( "TP3_Chaine::ConversionTuple2" ) {
+TEST_CASE ( "TP3_Chaine::ConversionTuple2" ) {
  Identite    i = { "Smith", "John" };
  Date        d = { 13, 07, 2003 };
  Coordonnees c = { 1.234, 6.789 };
@@ -174,7 +174,7 @@ using Coordonnees = std::tuple<double,double>; // {x,y}
             || chaine(c) == "1.234000 6.789000 ") == true );
 
  REQUIRE ( erreur == 0 );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 6
 using Personne = std::tuple<Identite,Date>;
