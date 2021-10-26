@@ -34,13 +34,13 @@ message ( STATUS "Compiler flags: ${CMAKE_CXX_FLAGS}" )
 
 # Sources #-----------------------------------------------------------------------------------------
 set ( ZZ3_HEADERS
-      #src/carte.hpp
+      src/carte.hpp
       src/complexe.hpp
       #src/consommateur.hpp
       src/mouchard.hpp
       #src/paquet.hpp
       #src/ressource.hpp
-      #src/usine.hpp
+      src/usine.hpp
       src/vecteur.hpp
     )
 
