@@ -36,6 +36,12 @@ class Vecteur {
    for (unsigned i = 0; i<taille_; ++i) tableau_[i]=v[i];
   }
 
+  //------------------------------------------------------------------------Constructeur déplacement
+  Vecteur(Vecteur && v) :
+    taille_(std::exchange(v.taille_, 0)),
+    tableau_(std::exchange(v.tableau_, nullptr)) {
+    }
+
   //-------------------------------------------------------------------------------------Destructeur
   ~Vecteur(void) { if (tableau_) delete [] tableau_; }
 
