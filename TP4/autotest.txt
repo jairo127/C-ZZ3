@@ -13,3 +13,11 @@
 4) (const défaut 20 + constr ad hoc 10 + affect copie 10 + affect mouvement 10)
 5) (const défaut 30 + constr ad hoc 20 + affect copie 10 + affect mouvement 20)
 6) constructeur copie 10
+
+> vecteur2
+1) constructeur défaut 20
+2) (constr ad hoc 20 + affect mvt 20)
+3) (constr défaut 10 + affect copie 10)
+4) (constr défaut 20 + constr ad hoc 10 + affect mvt 10)
+5) (constr défaut 30 + constr ad hoc 20 + affect mvt 20)
+6) constructeur copie 10
