@@ -15,6 +15,10 @@ class Valeur {
         double getNombre() const {
             return _valeur;
         }
+
+        bool operator<(Valeur const & r) const {
+            return this->getNombre() < r.getNombre();
+        }
 };
 
 #endif

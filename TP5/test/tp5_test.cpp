@@ -6,6 +6,8 @@
 //#include <histogramme.hpp>
 //#include <comparateur.hpp>
 #include <valeur.hpp>
+#include <echantillon.hpp>
+#include <classe.hpp>
 
 //using Histo = Histogramme; // A utiliser pour les tests 12-13
 //using Histo = Histogramme<>; // A utiliser a partir du test 14
@@ -47,14 +49,14 @@ TEST_CASE ( "TP3_Valeur::AccesseursConstants" ) {
 }
 
 //------------------------------------------------------------------------------------------------ 5
-/*TEST_CASE ( "TP3_Echantillon::Constructeur" ) {
+TEST_CASE ( "TP3_Echantillon::Constructeur" ) {
  Echantillon e;
 
  REQUIRE ( e.getTaille() == 0u );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 6
-/*TEST_CASE ( "TP3_Echantillon::Ajout" ) {
+TEST_CASE ( "TP3_Echantillon::Ajout" ) {
  Echantillon e;
 
  double v[] = { 5.0, 10.0, 15.0, 20.0 };
@@ -62,10 +64,10 @@ TEST_CASE ( "TP3_Valeur::AccesseursConstants" ) {
  for (unsigned i = 0; i<4; ++i) e.ajouter(v[i]);
 
  REQUIRE ( e.getTaille() == 4u );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 7
-/*TEST_CASE ( "TP3_Echantillon::MinMax" ) {
+TEST_CASE ( "TP3_Echantillon::MinMax" ) {
  Echantillon e;
 
  double v[] = { 5.0, 10.0, 15.0, 20.0 };
@@ -80,10 +82,10 @@ TEST_CASE ( "TP3_Valeur::AccesseursConstants" ) {
 
  REQUIRE ( e.getMinimum().getNombre() == Approx(min) );
  REQUIRE ( e.getMaximum().getNombre() == Approx(max) );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 8
-/*TEST_CASE ( "TP3_Echantillon::MinMaxException" ) {
+TEST_CASE ( "TP3_Echantillon::MinMaxException" ) {
  Echantillon e;
 
  int error = 0;
@@ -103,10 +105,10 @@ TEST_CASE ( "TP3_Valeur::AccesseursConstants" ) {
  catch (...) { error=1; }
 
  REQUIRE ( error == 2 );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 9
-/*TEST_CASE ( "TP3_Echantillon::Indice" ) {
+TEST_CASE ( "TP3_Echantillon::Indice" ) {
  Echantillon e;
 
  double v[] = { 5.0, 10.0, 15.0, 20.0 };
@@ -130,10 +132,10 @@ TEST_CASE ( "TP3_Valeur::AccesseursConstants" ) {
  catch (...) { error=1; }
 
  REQUIRE ( error == 2 );
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 10
-/*TEST_CASE ( "TP3_Classe::Constructeur" ) {
+TEST_CASE ( "TP3_Classe::Constructeur" ) {
  const double a = 12.0;
  const double b = 24.0;
 
@@ -142,10 +144,10 @@ TEST_CASE ( "TP3_Valeur::AccesseursConstants" ) {
  REQUIRE ( c.getBorneInf() == Approx(a) );
  REQUIRE ( c.getBorneSup() == Approx(b) );
  REQUIRE ( c.getQuantite() == 0u );
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 11
-/*TEST_CASE ( "TP3_Classe::Accesseurs" ) {
+TEST_CASE ( "TP3_Classe::Accesseurs" ) {
  const double   a = 12.0;
  const double   b = 24.0;
  const unsigned n = 7;
@@ -163,7 +165,7 @@ TEST_CASE ( "TP3_Valeur::AccesseursConstants" ) {
  c.ajouter();
 
  REQUIRE ( c.getQuantite() == n+1 );
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 12
 /*TEST_CASE ( "TP3_Histogramme::Constructeur" ) {
