@@ -3,13 +3,13 @@
 
 #include <cmath>
 
-//#include <histogramme.hpp>
+#include <histogramme.hpp>
 //#include <comparateur.hpp>
 #include <valeur.hpp>
 #include <echantillon.hpp>
 #include <classe.hpp>
 
-//using Histo = Histogramme; // A utiliser pour les tests 12-13
+using Histo = Histogramme; // A utiliser pour les tests 12-13
 //using Histo = Histogramme<>; // A utiliser a partir du test 14
 
 // Tests //-----------------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ TEST_CASE ( "TP3_Classe::Accesseurs" ) {
 }
 
 //----------------------------------------------------------------------------------------------- 12
-/*TEST_CASE ( "TP3_Histogramme::Constructeur" ) {
+TEST_CASE ( "TP3_Histogramme::Constructeur" ) {
  Histo h(5.0,15.0,5);
 
  double bornesInf[] = { 5.0, 7.0,  9.0, 11.0, 13.0 };
@@ -184,10 +184,10 @@ TEST_CASE ( "TP3_Classe::Accesseurs" ) {
   REQUIRE ( c.getQuantite() == 0u );
   ++i;
  }
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 13
-/*TEST_CASE ( "TP3_Histogramme::Echantillon" ) {
+TEST_CASE ( "TP3_Histogramme::Echantillon" ) {
  double v[] = { 7.0, 9.0, 8.0, 5.0, 10.0, 14.0, 13.0, 6.0, 5.5, 13.5 };
  double n[] = { 3, 2, 2, 0, 3 };
 
@@ -206,7 +206,7 @@ TEST_CASE ( "TP3_Classe::Accesseurs" ) {
  for (const Classe & c : h.getClasses()) {
   REQUIRE ( c.getQuantite() == Approx(n[i++]) );
  }
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 14
 /*TEST_CASE ( "TP3_Histogramme::Generique" ) {

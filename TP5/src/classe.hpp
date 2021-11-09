@@ -14,7 +14,7 @@ class Classe {
         void setBorneInf(const double inf) { _inf = inf; }
         double getBorneSup() const { return _sup; }
         void setBorneSup(const double sup) { _sup = sup; }
-        unsigned int getQuantite() { return _quantite; }
+        unsigned int getQuantite() const { return _quantite; }
         void setQuantite(unsigned int quantite) { _quantite = quantite; }
         void ajouter() { _quantite++; }
 };
