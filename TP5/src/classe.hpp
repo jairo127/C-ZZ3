@@ -17,6 +17,10 @@ class Classe {
         unsigned int getQuantite() const { return _quantite; }
         void setQuantite(unsigned int quantite) { _quantite = quantite; }
         void ajouter() { _quantite++; }
+
+        bool operator<(Classe const & r) const {
+            return this->getQuantite() < r.getQuantite();
+        }
 };
 
 #endif

@@ -2,13 +2,15 @@
 #define __CPP5_ZZ3_HISTOGRAMME__
 
 #include <vector>
+#include <set>
+#include <algorithm>
 #include <classe.hpp>
 #include <echantillon.hpp>
 #include <valeur.hpp>
 
 class Histogramme {
     private:
-        std::vector<Classe> _classes;
+        std::set<Classe> _classes;
 
     public:
         Histogramme(const double inf, const double sup, const int nb) {
@@ -22,7 +24,7 @@ class Histogramme {
             }
         }
 
-        std::vector<Classe> getClasses() { return _classes; }
+        std::set<Classe> getClasses() { return _classes; }
 
         void ajouter(const Echantillon e) {
             for(unsigned int i = 0; i < e.getTaille(); i++) {
@@ -30,7 +32,9 @@ class Histogramme {
                 for(unsigned int j = 0; j < _classes.size(); j++) {
                     if (v.getNombre() >= _classes[j].getBorneInf() && 
                         v.getNombre() < _classes[j].getBorneSup()) {
-                            _classes[j].ajouter();
+                            Classe tmp = _classes[j];
+                            tmp.ajouter();
+                            std::erase();
                             break;
                     }
                 }
