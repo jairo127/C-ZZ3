@@ -8,9 +8,19 @@
 #include <echantillon.hpp>
 #include <valeur.hpp>
 
+template <typename t>
+class ComparateurQuantite {
+	public:
+		bool operator()(Classe const & a, Classe const & b) const {
+			return (a.getQuantite() > b.getQuantite()) || 
+			 (a.getQuantite() == b.getQuantite() && a.getBorneInf() < b.getBorneInf());
+		}
+};
+
+template <class Compare = std::less<Classe>>
 class Histogramme {
     private:
-        std::set<Classe> _classes;
+        std::set<Classe, Compare> _classes;
 
     public:
         Histogramme(const double inf, const double sup, const int nb) {
@@ -18,28 +28,30 @@ class Histogramme {
             double tmp_inf = inf;
             double tmp_sup = tmp_inf + delta;
             for(int i = 0; i < nb; i++) {
-                _classes.push_back(Classe(tmp_inf, tmp_sup));
+                _classes.insert(Classe(tmp_inf, tmp_sup));
                 tmp_inf = tmp_sup;
                 tmp_sup = tmp_inf + delta;
             }
         }
 
-        std::set<Classe> getClasses() { return _classes; }
+        std::set<Classe, Compare> getClasses() { return _classes; }
 
         void ajouter(const Echantillon e) {
             for(unsigned int i = 0; i < e.getTaille(); i++) {
                 Valeur v = e.getValeur(i);
-                for(unsigned int j = 0; j < _classes.size(); j++) {
-                    if (v.getNombre() >= _classes[j].getBorneInf() && 
-                        v.getNombre() < _classes[j].getBorneSup()) {
-                            Classe tmp = _classes[j];
-                            tmp.ajouter();
-                            std::erase();
-                            break;
-                    }
+                auto it = std::find_if(
+                    _classes.begin(), 
+                    _classes.end(), 
+                    [&v](const Classe & c) { 
+                        return c.is_in(v.getNombre());
+                    });
+                if (it != _classes.end()) {
+                    Classe tmp(*it);
+                    _classes.erase(it);
+                    tmp.ajouter();
+                    _classes.insert(tmp);
                 }
             }
-
         }
 };
 

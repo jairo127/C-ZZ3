@@ -13,6 +13,10 @@ class Echantillon {
     public:
         Echantillon() {}
 
+        Echantillon(double v) : _valeurs(std::vector<Valeur>(1)) {
+			_valeurs.push_back(Valeur(v));
+		}
+
         unsigned int getTaille() const {
             return _valeurs.size();
         }

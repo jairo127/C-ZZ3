@@ -9,8 +9,8 @@
 #include <echantillon.hpp>
 #include <classe.hpp>
 
-using Histo = Histogramme; // A utiliser pour les tests 12-13
-//using Histo = Histogramme<>; // A utiliser a partir du test 14
+//using Histo = Histogramme; // A utiliser pour les tests 12-13
+using Histo = Histogramme<>; // A utiliser a partir du test 14
 
 // Tests //-----------------------------------------------------------------------------------------
 
@@ -209,7 +209,7 @@ TEST_CASE ( "TP3_Histogramme::Echantillon" ) {
 }
 
 //----------------------------------------------------------------------------------------------- 14
-/*TEST_CASE ( "TP3_Histogramme::Generique" ) {
+TEST_CASE ( "TP3_Histogramme::Generique" ) {
  using histo_t = Histogramme<>;
 
  histo_t h(5.0,15.0,5);
@@ -227,10 +227,10 @@ TEST_CASE ( "TP3_Histogramme::Echantillon" ) {
   REQUIRE ( c.getQuantite() == 0u );
   ++i;
  }
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 15
-/*TEST_CASE ( "TP3_Histogramme::FoncteurGreater" ) {
+TEST_CASE ( "TP3_Histogramme::FoncteurGreater" ) {
  using histo_t = Histogramme<std::greater<Classe>>;
 
  histo_t h(5.0,15.0,5);
@@ -248,10 +248,10 @@ TEST_CASE ( "TP3_Histogramme::Echantillon" ) {
   REQUIRE ( c.getBorneSup() == Approx(bornesSup[i]) );
   REQUIRE ( c.getQuantite() == 0u );
  }
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 16
-/*TEST_CASE ( "TP3_Histogramme::ComparateurQuantite" ) {
+TEST_CASE ( "TP3_Histogramme::ComparateurQuantite" ) {
  using histo_t = Histogramme<ComparateurQuantite<Classe>>;
 
  double v[] = { 7.0, 9.0, 8.0, 5.0, 10.0, 14.0, 13.0, 6.0, 5.5, 13.5 };
@@ -274,7 +274,7 @@ TEST_CASE ( "TP3_Histogramme::Echantillon" ) {
   REQUIRE ( c.getQuantite() == quantites[i] );
   ++i;
  }
-}*/
+}
 
 //------------------------------------------------------------------------------------------------17
 /*TEST_CASE ( "TP3_Histogramme::Conversion" ) {
