@@ -7,6 +7,7 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <mutex>
 
 // Classe  N o m b r e //---------------------------------------------------------------------------
 class Nombre {
@@ -22,7 +23,7 @@ class Nombre {
  private:
 	double valeur_;
 	//-------------------------------------------------------------------------------------------Pause
-	static void pause(unsigned n) { std::this_thread::sleep_for(std::chrono::milliseconds(5*n)); }
+	static void pause(unsigned n) { std::this_thread::sleep_for(std::chrono::milliseconds(50*n)); }
 
  public:
 	//-----------------------------------------------------------------------------Constructeur defaut
@@ -71,7 +72,7 @@ inline Nombre operator*(const Nombre & a,const Nombre & b) {
 
 //-----------------------------------------------------------------------------------------operator/
 inline Nombre operator/(const Nombre & a,const Nombre & b) {
-	Nombre::pause(10);
+	Nombre::pause(1000);
 	return (a.valeur_/b.valeur_);
 }
 
@@ -96,6 +97,15 @@ void for_sequentiel(unsigned x, unsigned y, T f) {
 	for (unsigned i = x; i < y; i++) {
 		f(i);
 	}
+}
+
+template <int N,typename T>
+void for_parallele(unsigned x, unsigned y, T f) {
+	std::thread t[N];
+	unsigned taille = y-x;
+	for (unsigned i = 0; i<N; ++i) t[i] = std::thread(for_sequentiel<T>,i*taille/N, (i+1)*taille/N, f);
+	for (unsigned i = 0; i<N; ++i) t[i].join();
+
 }
 
 #endif

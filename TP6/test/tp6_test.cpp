@@ -1,6 +1,7 @@
 // Entetes //---------------------------------------------------------------------------------------
 #include "catch.hpp"
 
+#include <mutex>
 #include <cmath>
 #include <random>
 
@@ -36,6 +37,36 @@ TEST_CASE ( "TP3_Valeur::Constructeur" ) {
 	REQUIRE ( b[taille-1] == taille*2 );
 	REQUIRE ( c[0] == taille+1 );
 	REQUIRE ( c[taille-1] == taille*2*taille );
+}
+
+//------------------------------------------------------------------------------------------------ 1
+TEST_CASE ( "TP6_Valeur::Parallele" ) {
+	unsigned compteur = 0;
+	
+	const unsigned taille = 12;
+
+	std::vector<Nombre> a(taille);
+	std::vector<Nombre> b(taille);
+	std::vector<Nombre> c(taille);
+
+	std::mutex mutex;
+
+	for_parallele<4>(0, taille, [&] (unsigned i) {
+			std::lock_guard<std::mutex> verrou(mutex);
+			a[i] = ++compteur; 
+		});
+	for_parallele<4>(0, taille, [&] (unsigned i) {
+			std::lock_guard<std::mutex> verrou(mutex);
+			b[i] = ++compteur;
+		});
+
+	std::cout << "a = " << a << std::endl;
+	std::cout << "b = " << b << std::endl;
+	std::cout << "compteur = " << compteur << std::endl;
+
+	for_parallele<4>(0,taille, [&] (unsigned i) { c[i] = a[i]*b[i]; } );
+	
+	std::cout << "c = " << c << std::endl;
 }
 
 // Fin //-------------------------------------------------------------------------------------------
