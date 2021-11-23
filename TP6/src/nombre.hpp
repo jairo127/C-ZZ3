@@ -90,9 +90,10 @@ inline std::ostream & operator<<(std::ostream & flux,const std::vector<Nombre> &
 }
 
 // Fin //-------------------------------------------------------------------------------------------
+
 template <typename T>
-void for_sequentiel(unsigned x,unsigned y,T f){
-	for (unsigned i = x; i<y; ++i){
+void for_sequentiel(unsigned x, unsigned y, T f) {
+	for (unsigned i = x; i < y; i++) {
 		f(i);
 	}
 }
