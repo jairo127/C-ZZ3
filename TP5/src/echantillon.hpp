@@ -1,6 +1,7 @@
 #ifndef __CPP5_ZZ3_ECHANTILLON__
 #define __CPP5_ZZ3_ECHANTILLON__
 
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <valeur.hpp>
@@ -42,6 +43,21 @@ class Echantillon {
                 throw std::out_of_range("Indice is out of range");
             return _valeurs[indice];
         }
+
+        auto const & getValeurs() const{
+			return _valeurs;
+		}
 };
+
+std::ostream & operator<<(std::ostream & o, Echantillon const & e){
+	auto v = e.getValeurs();
+	o << "Echantillon = ";
+	std::for_each(v.begin(), v.end(),
+		[&o](Valeur const v) mutable {
+			o << v << " ";
+		}
+	);
+	return o;
+}
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef __CPP5_ZZ3_CLASSE__
 #define __CPP5_ZZ3_CLASSE__
 
+#include <iostream>
+
 class Classe {
     private:
         double _inf;
@@ -27,5 +29,12 @@ class Classe {
             return this->getBorneInf() > r.getBorneInf();
         }
 };
+
+std::ostream & operator<<(std::ostream & o, Classe const & c){
+	o << "[" << c.getBorneInf() << ";";
+	o << c.getBorneSup() << "] = ";
+	o << c.getQuantite();
+	return o;
+}
 
 #endif
