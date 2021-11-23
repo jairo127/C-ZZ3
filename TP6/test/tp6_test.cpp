@@ -49,14 +49,10 @@ TEST_CASE ( "TP6_Valeur::Parallele" ) {
 	std::vector<Nombre> b(taille);
 	std::vector<Nombre> c(taille);
 
-	std::mutex mutex;
-
-	for_parallele<4>(0, taille, [&] (unsigned i) {
-			std::lock_guard<std::mutex> verrou(mutex);
+	for_sequentiel(0, taille, [&] (unsigned i) {
 			a[i] = ++compteur; 
 		});
-	for_parallele<4>(0, taille, [&] (unsigned i) {
-			std::lock_guard<std::mutex> verrou(mutex);
+	for_sequentiel(0, taille, [&] (unsigned i) {
 			b[i] = ++compteur;
 		});
 
